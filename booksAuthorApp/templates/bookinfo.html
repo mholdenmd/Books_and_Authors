@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{oneBooks.title}}</h1>
+    <p><h2>ID: {{oneBooks.id}}</h2></p>
+    <p>Description: {{oneBooks.desc}}</p>
+    <p>Authors:</p>
+    <ul>
+        {% for authobj in oneBooks.publishers.all %}
+            <li>{{authobj.first_name}}</li>
+        {% endfor %}
+
+    </ul>
+
+    <form action="/addToAuthorlist/{{oneBooks.id}}" method="post">
+        {% csrf_token %}
+        <select name="selectAuthor" id="Add an Author">
+            {% for authchamps in allAuthor %}
+            <option value="{{authchamps.id}}">{{authchamps.first_name}}</option>
+            {% endfor %}            
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

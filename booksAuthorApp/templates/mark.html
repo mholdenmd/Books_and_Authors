@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add a Book</h1>
+    <form action="/createNewBook" method="post">
+        {% csrf_token %}
+        <p>Title:<input type="text" id="booktitle" name="booktitle" id=""></p>
+        <p>Description:</p>
+        <p><textarea id="desc" name="desc" rows="4" cols="50"></textarea></p>
+        <input type="submit" value="Add">
+      </form>
+
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Action</th>
+        </tr>
+        {% for bookobj in allBooks %}
+        <tr>
+          <td>{{bookobj.id}}</td>
+          <td>{{bookobj.title}}</td>
+          <td><a href="/bookinfo/{{bookobj.id}}">View</a></td>
+        </tr>
+        {% endfor %}
+        
+      </table>
+      
+
+</body>
+</html>

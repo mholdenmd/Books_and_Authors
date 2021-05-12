@@ -1,0 +1,85 @@
+from booksAuthorApp.models import *
+-------------------------------------------------
+
+Book.objects.create(title = "C Sharp")
+Book.objects.create(title = "Java")
+Book.objects.create(title = "Python")
+Book.objects.create(title = "PHP")
+Book.objects.create(title = "Ruby")
+-------------------------------------------------
+
+Author.objects.create(first_name = "Jane", last_name= "Austen")
+Author.objects.create(first_name = "Emily", last_name= "Dickinson")
+Author.objects.create(first_name = "Fyodor", last_name= "Dostoevsky")
+Author.objects.create(first_name = "William", last_name= "Shakespeare")
+Author.objects.create(first_name = "Lau", last_name= "Tzu")
+-------------------------------------------------
+
+
+c = Book.objects.get(id=7)
+c.delete()
+-------------------------------------------------
+Updating an existing record
+a = Book.objects.get(id=6)
+a.title = "Digimon"
+a.save()
+-------------------------------------------------
+
+c = Author.objects.get(id=4)
+c.first_name = "Bill"
+c.save()
+-------------------------------------------------
+this_book = Book.objects.get(id=4)
+
+this_book = Book.objects.get(id=4)	# retrieve an instance of a book
+this_publisher = Publisher.objects.get(id=2)	# retrieve an instance of a publisher
+    
+# 2 options that do the same thing:
+this_publisher.books.add(this_book)		# add the book to this publisher's list of books
+# OR
+this_book.publishers.add(this_publisher)	# add the publisher to this book's list of publishers
+-------------------------------------------------
+
+this_book = Book.objects.get(id=1)
+this_publisher = 
+Author.objects.get(id=1).notes.add(Book.objects.get(id=1))
+Author.objects.get(id=1).notes.add(Book.objects.get(id=2))
+Author.objects.get(id=2).notes.add(Book.objects.get(id=1))
+Author.objects.get(id=2).notes.add(Book.objects.get(id=2))
+Author.objects.get(id=2).notes.add(Book.objects.get(id=3))
+Author.objects.get(id=3).notes.add(Book.objects.get(id=1))
+Author.objects.get(id=3).notes.add(Book.objects.get(id=2))
+Author.objects.get(id=3).notes.add(Book.objects.get(id=3))
+Author.objects.get(id=3).notes.add(Book.objects.get(id=4))
+Author.objects.get(id=4).notes.add(Book.objects.get(id=1))
+Author.objects.get(id=4).notes.add(Book.objects.get(id=2))
+Author.objects.get(id=4).notes.add(Book.objects.get(id=3))
+Author.objects.get(id=4).notes.add(Book.objects.get(id=4))
+Author.objects.get(id=4).notes.add(Book.objects.get(id=5))
+-------------------------------------------------
+
+retrieve Author for a certain book
+Book.objects.get(id=3).publishers.all()
+-------------------------------------------------
+
+how to remove a author from a book:
+Author.objects.get(id=2).notes.remove(Book.objects.get(id=3))
+-------------------------------------------------
+new author addeed and assigned to a book:
+Author.objects.get(id=5).notes.add(Book.objects.get(id=2))
+-------------------------------------------------
+find all the books that author was a part of.
+Author.objects.get(id=3).notes.all()
+-------------------------------------------------
+Book.objects.get(id=5).publishers.all()
+
+Digimon
+Adults sending their 10 year old kids in to a dangerous world fill with creatures who can kill people and others alike at anytime!!!
+
+
+
+
+
+
+
+
